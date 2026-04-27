@@ -8,18 +8,16 @@ import styled from 'styled-components/native';
 import DrawerNavigator from '@/navigation/App/DrawerNav/DrawerNavigator';
 function App() {
   return (
-    <SafeAreaProvider>
-      <NavigationContainer>
-        <Container>
-          <DrawerNavigator />
-        </Container>
-      </NavigationContainer>
-    </SafeAreaProvider>
+    <NavigationContainer>
+      <Container>
+        <DrawerNavigator />
+      </Container>
+    </NavigationContainer>
   );
 }
 
 export default App;
 
-const Container = styled(SafeAreaView)`
+const Container = styled(SafeAreaProvider)`
   flex: 1;
 `;
