@@ -51,14 +51,14 @@ function CustomDrawerContent(props: DrawerContentComponentProps) {
     <Container>
       <HeaderImage
         source={{
-          uri: 'https://wallpapercave.com/wp/wp2043918.jpg',
+          uri: 'https://images.alphacoders.com/241/thumb-1920-241901.jpg',
         }}
         resizeMode="cover"
       />
 
       <DrawerContentScrollView
         {...props}
-        contentContainerStyle={{ paddingTop: 5 }}
+        contentContainerStyle={{ paddingTop: 0 }}
         showsVerticalScrollIndicator={false}
       >
         {renderItem('Home', 'grid-outline', 'Home')}
