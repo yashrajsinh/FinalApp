@@ -6,9 +6,10 @@ module.exports = {
       {
         root: ['./'],
         alias: {
-          '@': './src', //@ for ./src
+          '@': './src',
         },
       },
     ],
+    'react-native-reanimated/plugin',
   ],
 };

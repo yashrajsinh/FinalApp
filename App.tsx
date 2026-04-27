@@ -3,15 +3,15 @@ import React from 'react';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { NavigationContainer } from '@react-navigation/native';
 import styled from 'styled-components/native';
-//tab bar
-import TabNavigation from '@/navigation/App/TabNavigation';
+//Drawer bar
+import DrawerNavigation from '@/navigation/App/DrawerNavigation';
 
 function App() {
   return (
     <SafeAreaProvider>
       <NavigationContainer>
         <Container>
-          <TabNavigation />
+          <DrawerNavigation />
         </Container>
       </NavigationContainer>
     </SafeAreaProvider>
