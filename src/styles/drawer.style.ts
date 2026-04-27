@@ -17,8 +17,8 @@ export const ItemWrapper = styled.TouchableOpacity<ItemProps>`
   flex-direction: row;
   align-items: center;
   padding: 14px 16px;
-  margin: 5px 12px 6px;
-  border-radius: 14px;
+  margin: 0px 1px 1px;
+  border-radius: 20px;
   background-color: ${({ active }) =>
     active ? 'rgba(79,70,229,0.12)' : 'transparent'};
 `;

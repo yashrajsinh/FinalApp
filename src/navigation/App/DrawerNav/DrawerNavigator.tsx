@@ -18,7 +18,6 @@ import TabNavigator from '../TabNav/TabNavigator';
 import {
   Container,
   HeaderImage,
-  MenuWrapper,
   ItemWrapper,
   ItemLabel,
 } from '@/styles/drawer.style';
@@ -52,7 +51,7 @@ function CustomDrawerContent(props: DrawerContentComponentProps) {
     <Container>
       <HeaderImage
         source={{
-          uri: 'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/4032ada5-0df4-44b0-a784-0894dabce3b3/dbl19es-2c1e8a65-7004-4999-a065-9e6ebc144676.jpg/v1/fill/w_1024,h_640,q_75,strp/the_kustom_shop___beautiful_nature_background_by_thekustomshop_dbl19es-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NjQwIiwicGF0aCI6Ii9mLzQwMzJhZGE1LTBkZjQtNDRiMC1hNzg0LTA4OTRkYWJjZTNiMy9kYmwxOWVzLTJjMWU4YTY1LTcwMDQtNDk5OS1hMDY1LTllNmViYzE0NDY3Ni5qcGciLCJ3aWR0aCI6Ijw9MTAyNCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.Ou28Wt4l2mG7_zMF_by0Yhxf5gsIocVNTRJSujs6jig',
+          uri: 'https://images.alphacoders.com/241/thumb-1920-241901.jpg',
         }}
         resizeMode="cover"
       />
