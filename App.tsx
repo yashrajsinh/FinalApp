@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { NavigationContainer } from '@react-navigation/native';
 import styled from 'styled-components/native';
 
@@ -17,7 +17,7 @@ function App() {
     RNBootSplash.hide({ fade: true });
   }, []);
 
-  const isLoggedIn = false; // real Auth state
+  const isLoggedIn = true; // real Auth state
   return (
     <NavigationContainer>
       <Container>
@@ -29,6 +29,6 @@ function App() {
 
 export default App;
 
-const Container = styled(SafeAreaProvider)`
+const Container = styled(SafeAreaView)`
   flex: 1;
 `;
