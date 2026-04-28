@@ -11,6 +11,9 @@ import { useEffect } from 'react';
 import RNBootSplash from 'react-native-bootsplash';
 //Log in (Auth Nav)
 import AuthNavigator from '@/navigation/Auth/AuthNavigator';
+
+//Toast
+import Toast from 'react-native-toast-message';
 function App() {
   //Splash Screen Effect
   useEffect(() => {
@@ -19,11 +22,14 @@ function App() {
 
   const isLoggedIn = false; // real Auth state
   return (
-    <NavigationContainer>
-      <Container>
-        {isLoggedIn ? <DrawerNavigator /> : <AuthNavigator />}
-      </Container>
-    </NavigationContainer>
+    <>
+      <NavigationContainer>
+        <Container>
+          {isLoggedIn ? <DrawerNavigator /> : <AuthNavigator />}
+        </Container>
+      </NavigationContainer>
+      <Toast position="bottom" />
+    </>
   );
 }
 

@@ -17,7 +17,10 @@ import {
 //navigation
 import { useNavigation } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
-
+//API Service
+import { signUp } from '@/services/Auth/Auth';
+//Toast
+import Toast from 'react-native-toast-message';
 type AuthStackParamList = {
   Login: undefined;
   SignUp: undefined;
@@ -31,6 +34,23 @@ const SignUpScreen = (props: Props) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  // func to handle sign up
+  const handleSignUp = async () => {
+    try {
+      const user = await signUp(email, password);
+      showToast('success', 'User Registered');
+      navigation.goBack();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  //Toast func
+  const showToast = (type: string, message: string) => {
+    Toast.show({
+      type: type,
+      text2: message,
+    });
+  };
 
   return (
     <Container>
@@ -66,7 +86,7 @@ const SignUpScreen = (props: Props) => {
           />
 
           {/* 🔘 Actions */}
-          <PrimaryButton text="Sign Up" onPress={() => console.log('Signup')} />
+          <PrimaryButton text="Sign Up" onPress={handleSignUp} />
 
           <SecondaryButton
             text="Back to Login"
