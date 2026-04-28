@@ -4,7 +4,6 @@ import {
   DrawerContentScrollView,
   DrawerContentComponentProps,
 } from '@react-navigation/drawer';
-
 import { TouchableOpacity } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
@@ -24,28 +23,19 @@ import {
 
 const Drawer = createDrawerNavigator();
 
-function CustomDrawerContent(props: DrawerContentComponentProps) {
-  const { state, navigation } = props;
+// Central config
+const drawerItems = [
+  { label: 'Home', icon: 'grid-outline', route: 'Home' },
+  { label: 'Portfolio', icon: 'briefcase-outline', route: 'Portfolio' },
+  { label: 'About', icon: 'information-circle-outline', route: 'About' },
+  { label: 'Rate Us', icon: 'star-outline', route: 'Rate' },
+];
 
+function CustomDrawerContent({
+  state,
+  navigation,
+}: DrawerContentComponentProps) {
   const focusedRoute = state.routeNames[state.index];
-
-  const renderItem = (label: string, icon: string, routeName: string) => {
-    const active = focusedRoute === routeName;
-
-    return (
-      <ItemWrapper
-        active={active}
-        onPress={() => navigation.navigate(routeName as never)}
-      >
-        <Ionicons
-          name={icon}
-          size={22}
-          color={active ? '#4F46E5' : '#64748B'}
-        />
-        <ItemLabel active={active}>{label}</ItemLabel>
-      </ItemWrapper>
-    );
-  };
 
   return (
     <Container>
@@ -57,20 +47,31 @@ function CustomDrawerContent(props: DrawerContentComponentProps) {
       />
 
       <DrawerContentScrollView
-        {...props}
         contentContainerStyle={{ paddingTop: 0 }}
         showsVerticalScrollIndicator={false}
       >
-        {renderItem('Home', 'grid-outline', 'Home')}
-        {renderItem('Portfolio', 'briefcase-outline', 'Portfolio')}
-        {renderItem('About', 'information-circle-outline', 'About')}
-        {renderItem('Rate Us', 'star-outline', 'Rate')}
+        {drawerItems.map(item => {
+          const active = focusedRoute === item.route;
+
+          return (
+            <ItemWrapper
+              key={item.route}
+              active={active}
+              onPress={() => navigation.navigate(item.route as never)}
+            >
+              <Ionicons
+                name={item.icon}
+                size={22}
+                color={active ? '#4F46E5' : '#64748B'}
+              />
+              <ItemLabel active={active}>{item.label}</ItemLabel>
+            </ItemWrapper>
+          );
+        })}
       </DrawerContentScrollView>
     </Container>
   );
 }
-
-/* ---------------- MAIN NAVIGATOR ---------------- */
 
 export default function DrawerNavigator() {
   return (
@@ -82,7 +83,7 @@ export default function DrawerNavigator() {
 
         headerLeft: () => (
           <TouchableOpacity
-            onPress={() => navigation.toggleDrawer()}
+            onPress={navigation.toggleDrawer}
             style={{
               marginLeft: 15,
               backgroundColor: '#f1f5f9',
@@ -105,10 +106,21 @@ export default function DrawerNavigator() {
         },
       })}
     >
-      <Drawer.Screen name="Home" component={TabNavigator} />
-      <Drawer.Screen name="Portfolio" component={PortfolioScreen} />
-      <Drawer.Screen name="About" component={AboutUsScreen} />
-      <Drawer.Screen name="Rate" component={RateUsScreen} />
+      {drawerItems.map(item => (
+        <Drawer.Screen
+          key={item.route}
+          name={item.route}
+          component={
+            item.route === 'Home'
+              ? TabNavigator
+              : item.route === 'Portfolio'
+              ? PortfolioScreen
+              : item.route === 'About'
+              ? AboutUsScreen
+              : RateUsScreen
+          }
+        />
+      ))}
     </Drawer.Navigator>
   );
 }

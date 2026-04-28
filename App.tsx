@@ -4,20 +4,24 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { NavigationContainer } from '@react-navigation/native';
 import styled from 'styled-components/native';
 
-//drawer nav
+//drawer nav (APP Nav)
 import DrawerNavigator from '@/navigation/App/DrawerNav/DrawerNavigator';
 //RN Splash
 import { useEffect } from 'react';
 import RNBootSplash from 'react-native-bootsplash';
-
+//Log in (Auth Nav)
+import AuthNavigator from '@/navigation/Auth/AuthNavigator';
 function App() {
+  //Splash Screen Effect
   useEffect(() => {
     RNBootSplash.hide({ fade: true });
   }, []);
+
+  const isLoggedIn = false; // real Auth state
   return (
     <NavigationContainer>
       <Container>
-        <DrawerNavigator />
+        {isLoggedIn ? <DrawerNavigator /> : <AuthNavigator />}
       </Container>
     </NavigationContainer>
   );
