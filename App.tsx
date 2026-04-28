@@ -17,7 +17,7 @@ function App() {
     RNBootSplash.hide({ fade: true });
   }, []);
 
-  const isLoggedIn = true; // real Auth state
+  const isLoggedIn = false; // real Auth state
   return (
     <NavigationContainer>
       <Container>

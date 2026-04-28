@@ -115,3 +115,10 @@ export const ForgotText = styled.Text`
   font-size: 12px;
   color: ${colors.primary};
 `;
+
+export const FooterText = styled.Text`
+  font-size: 12px;
+  color: #94a3b8;
+  text-align: center;
+  margin-top: 12px;
+`;

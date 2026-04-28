@@ -17,7 +17,16 @@ import {
   ForgotText,
 } from '@/components/styles/loginStyles';
 
+//navigation
+import { useNavigation } from '@react-navigation/native';
+
+type Nav = {
+  navigate: (screen: string) => void;
+};
+
 const LogInScreen = () => {
+  const navigation = useNavigation<Nav>();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -54,7 +63,7 @@ const LogInScreen = () => {
           />
 
           {/* Forgot Password */}
-          <ForgotPassword>
+          <ForgotPassword onPress={() => navigation.navigate('Forgot')}>
             <ForgotText>Forgot Password?</ForgotText>
           </ForgotPassword>
 
@@ -62,7 +71,7 @@ const LogInScreen = () => {
           <PrimaryButton text="Login" onPress={() => console.log('Login')} />
           <SecondaryButton
             text="Sign Up"
-            onPress={() => console.log('Signup')}
+            onPress={() => navigation.navigate('Register')}
           />
         </Card>
       </Content>

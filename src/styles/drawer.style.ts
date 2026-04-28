@@ -19,7 +19,7 @@ const colors = {
 };
 
 /* 📦 CONTAINER */
-export const Container = styled.View`
+export const Container = styled.SafeAreaView`
   flex: 1;
   background-color: ${colors.background};
 `;
