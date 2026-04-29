@@ -1,32 +1,44 @@
-import React from 'react';
-
+import React, { useEffect, useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { NavigationContainer } from '@react-navigation/native';
 import styled from 'styled-components/native';
 
-//drawer nav (APP Nav)
 import DrawerNavigator from '@/navigation/App/DrawerNav/DrawerNavigator';
-//RN Splash
-import { useEffect } from 'react';
-import RNBootSplash from 'react-native-bootsplash';
-//Log in (Auth Nav)
 import AuthNavigator from '@/navigation/Auth/AuthNavigator';
 
-//Toast
+import RNBootSplash from 'react-native-bootsplash';
+import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
+
 import Toast from 'react-native-toast-message';
+
 function App() {
-  //Splash Screen Effect
+  const [user, setUser] = useState<FirebaseAuthTypes.User | null>(null);
+  const [initializing, setInitializing] = useState(true);
+
+  // Firebase auth listener
   useEffect(() => {
-    RNBootSplash.hide({ fade: true });
+    const subscriber = auth().onAuthStateChanged(
+      (user: FirebaseAuthTypes.User | null) => {
+        setUser(user);
+        setInitializing(false);
+      },
+    );
+    return subscriber;
   }, []);
 
-  const isLoggedIn = false; // real Auth state
+  useEffect(() => {
+    if (!initializing) {
+      RNBootSplash.hide({ fade: true });
+    }
+  }, [initializing]);
+
+  // While checking auth → keep splash
+  if (initializing) return null;
+
   return (
     <>
       <NavigationContainer>
-        <Container>
-          {isLoggedIn ? <DrawerNavigator /> : <AuthNavigator />}
-        </Container>
+        <Container>{user ? <DrawerNavigator /> : <AuthNavigator />}</Container>
       </NavigationContainer>
       <Toast position="bottom" />
     </>
