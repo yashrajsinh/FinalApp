@@ -4,10 +4,17 @@ import React, { useEffect, useState } from 'react';
 import { getMovies } from '@/services/movies/MoviesService';
 //Card View
 import CardComponent from '@/components/CardComponent/CardComponent';
+//navigation
+import { useNavigation } from '@react-navigation/native';
 type Props = {};
+
+type Nav = {
+  navigate: (screen: string) => void;
+};
 
 const HomeScreen = (props: Props) => {
   const [data, setData] = useState([]);
+  const navigation = useNavigation<Nav>();
   //call API
   useEffect(() => {
     const loadMovies = async () => {
@@ -26,7 +33,7 @@ const HomeScreen = (props: Props) => {
         renderItem={({ item }) => (
           <CardComponent
             item={item}
-            onPress={() => console.log('Pressed ' + item)}
+            onPress={() => navigation.navigate('MovieDetails', { item })}
           />
         )}
       />

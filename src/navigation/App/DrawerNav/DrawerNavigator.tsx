@@ -92,7 +92,7 @@ export default function DrawerNavigator() {
               borderRadius: 12,
             }}
           >
-            <Ionicons name="menu" size={25} color="#fff" />
+            <Ionicons name="menu" size={24} color="rgba(234, 179, 8, 0.9)" />
           </TouchableOpacity>
         ),
 

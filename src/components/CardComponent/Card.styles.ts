@@ -1,13 +1,12 @@
 import styled from 'styled-components/native';
 
-/* 🎯 COLORS (reuse same theme) */
+/* 🎨 THEME */
 const colors = {
   primary: '#EAB308',
   primarySoft: 'rgba(234,179,8,0.08)',
 
-  background: '#0B1220', // deepest
-  surface: '#0F172A', // screen bg (lighter than before)
-  card: '#111827', // updated card (lighter & balanced)
+  background: '#0B1220',
+  card: '#111827',
 
   text: '#E5E7EB',
   subtext: '#9CA3AF',
@@ -15,43 +14,30 @@ const colors = {
   border: 'rgba(255,255,255,0.06)',
 };
 
-/* 🪟 CARD WRAPPER */
+/* 🪟 CARD */
 export const Wrapper = styled.TouchableOpacity`
   flex-direction: row;
   background-color: ${colors.card};
-  border-radius: 16px;
-  margin-bottom: 14px;
-  margin-horizontal: 16px;
-  active-opacity: 0.85;
-  border: 2px solid ${colors.border};
+  border-radius: 18px;
+  margin: 10px 16px;
+
+  border: 1px solid ${colors.border};
 
   overflow: hidden;
 
   shadow-color: #000;
-  shadow-opacity: 0.25;
-  shadow-radius: 12px;
-  elevation: 4;
+  shadow-opacity: 0.18;
+  shadow-radius: 10px;
+  elevation: 3;
 `;
-/* 🎬 POSTER */
+
+/* 🎬 POSTER (clean + sharp) */
 export const Poster = styled.Image`
   width: 110px;
   height: 150px;
-
-  border-top-left-radius: 16px;
-  border-bottom-left-radius: 16px;
-
   resize-mode: cover;
 `;
-export const PosterWrapper = styled.View`
-  background-color: #0b1220;
-  overflow: hidden;
-`;
-export const PosterOverlay = styled.View`
-  position: absolute;
-  width: 110px;
-  height: 150px;
-  background-color: rgba(0, 0, 0, 0.08);
-`;
+
 /* 📦 CONTENT */
 export const Info = styled.View`
   flex: 1;
@@ -59,7 +45,7 @@ export const Info = styled.View`
   justify-content: space-between;
 `;
 
-/* 🔝 TOP */
+/* 🔝 TITLE AREA */
 export const Top = styled.View``;
 
 export const Name = styled.Text`
@@ -74,7 +60,7 @@ export const Genres = styled.Text`
   margin-top: 4px;
 `;
 
-/* 🔽 BOTTOM */
+/* 🔽 FOOTER */
 export const Bottom = styled.View`
   flex-direction: row;
   justify-content: space-between;
@@ -86,7 +72,7 @@ export const Year = styled.Text`
   color: ${colors.subtext};
 `;
 
-/* ⭐ RATING */
+/* ⭐ BADGE */
 export const RatingBadge = styled.View`
   background-color: ${colors.primarySoft};
   border: 1px solid ${colors.primary};

@@ -10,8 +10,6 @@ import {
   Year,
   RatingBadge,
   RatingText,
-  PosterWrapper,
-  PosterOverlay,
 } from './Card.styles';
 
 type Props = {
@@ -24,10 +22,7 @@ const CardComponent = ({ item, onPress }: Props) => {
 
   return (
     <Wrapper activeOpacity={0.85} onPress={() => onPress(item)}>
-      <PosterWrapper>
-        <Poster source={{ uri: show.image?.medium }} />
-        <PosterOverlay />
-      </PosterWrapper>
+      <Poster source={{ uri: show.image?.medium }} />
 
       <Info>
         <Top>

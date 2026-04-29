@@ -3,9 +3,10 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 // Screens
-import HomeScreen from '@/screens/App/HomeScreen';
-import SearchScreen from '@/screens/App/SearchScreen';
-import ProfileScreen from '@/screens/App/ProfileScreen';
+import SearchScreen from '@/screens/App/TabScreens/SearchScreen';
+import ProfileScreen from '@/screens/App/TabScreens/ProfileScreen';
+//stack
+import HomeStack from '@/screens/App/TabStack/HomeStack';
 
 const Tab = createBottomTabNavigator();
 
@@ -36,18 +37,18 @@ export default function TabNavigator() {
           elevation: 7,
           marginLeft: 40,
           marginRight: 40,
-          bottom: 10,
-          backgroundColor: '#1F2937',
+          bottom: 15,
+          backgroundColor: '#2C3947',
           borderRadius: 20,
           height: 60,
           shadowColor: '#000',
           shadowOffset: { width: 0, height: 5 },
-          shadowOpacity: 0.2,
+          shadowOpacity: 0.5,
           shadowRadius: 5,
         },
       })}
     >
-      <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="Home" component={HomeStack} />
       <Tab.Screen name="Search" component={SearchScreen} />
       <Tab.Screen name="Profile" component={ProfileScreen} />
     </Tab.Navigator>
