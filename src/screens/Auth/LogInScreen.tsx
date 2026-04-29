@@ -16,19 +16,37 @@ import {
   ForgotPassword,
   ForgotText,
 } from '@/components/styles/loginStyles';
-
+//Toast
+import Toast from 'react-native-toast-message';
 //navigation
 import { useNavigation } from '@react-navigation/native';
-
+//API Service
+import { logIn } from '@/services/Auth/Auth';
 type Nav = {
   navigate: (screen: string) => void;
 };
 
 const LogInScreen = () => {
   const navigation = useNavigation<Nav>();
-
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  // func to handle sign up
+  const handleLogIn = async () => {
+    try {
+      await logIn(email, password);
+      showToast('success', 'User exits in DB');
+    } catch (error) {
+      console.log('Log in Error', error + '');
+      showToast('error', error + '');
+    }
+  };
+  //Toast func
+  const showToast = (type: string, message: string) => {
+    Toast.show({
+      type: type,
+      text2: message,
+    });
+  };
 
   return (
     <Container>
@@ -68,7 +86,7 @@ const LogInScreen = () => {
           </ForgotPassword>
 
           {/* Buttons */}
-          <PrimaryButton text="Login" onPress={() => console.log('Login')} />
+          <PrimaryButton text="Login" onPress={handleLogIn} />
           <SecondaryButton
             text="Sign Up"
             onPress={() => navigation.navigate('Register')}
