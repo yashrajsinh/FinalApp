@@ -29,15 +29,15 @@ export default function TabNavigator() {
           return <Ionicons name={iconName} size={22} color={color} />;
         },
 
-        tabBarActiveTintColor: '#4F46E5',
-        tabBarInactiveTintColor: '#888',
+        tabBarActiveTintColor: '#EAB308',
+        tabBarInactiveTintColor: '#9CA3AF',
         tabBarStyle: {
           position: 'absolute',
           elevation: 7,
           marginLeft: 40,
           marginRight: 40,
           bottom: 10,
-          backgroundColor: '#F4F2EC',
+          backgroundColor: '#1F2937',
           borderRadius: 20,
           height: 60,
           shadowColor: '#000',

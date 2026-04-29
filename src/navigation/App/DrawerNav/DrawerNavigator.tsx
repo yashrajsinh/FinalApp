@@ -79,6 +79,7 @@ export default function DrawerNavigator() {
       drawerContent={props => <CustomDrawerContent {...props} />}
       screenOptions={({ navigation }) => ({
         headerShown: true,
+        headerTitle: '',
         drawerType: 'front',
 
         headerLeft: () => (
@@ -86,12 +87,12 @@ export default function DrawerNavigator() {
             onPress={navigation.toggleDrawer}
             style={{
               marginLeft: 15,
-              backgroundColor: '#f1f5f9',
+              backgroundColor: '#1F2937',
               padding: 8,
               borderRadius: 12,
             }}
           >
-            <Ionicons name="menu" size={24} color="#0f172a" />
+            <Ionicons name="menu" size={25} color="#fff" />
           </TouchableOpacity>
         ),
 
@@ -101,8 +102,9 @@ export default function DrawerNavigator() {
         },
 
         headerShadowVisible: false,
+
         headerStyle: {
-          backgroundColor: '#fff',
+          backgroundColor: '#1F2937',
         },
       })}
     >

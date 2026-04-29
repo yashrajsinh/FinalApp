@@ -19,7 +19,7 @@ const HomeScreen = (props: Props) => {
   }, []);
 
   return (
-    <View style={{ padding: 10 }}>
+    <View style={{ padding: 10, backgroundColor: '#1F2937' }}>
       <FlatList
         data={data}
         keyExtractor={(item: any) => item.show.id.toString()}

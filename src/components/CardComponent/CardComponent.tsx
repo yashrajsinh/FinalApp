@@ -1,37 +1,49 @@
-import { View, Text, Image, TouchableOpacity } from 'react-native';
 import React from 'react';
+import {
+  Wrapper,
+  Poster,
+  Info,
+  Top,
+  Name,
+  Genres,
+  Bottom,
+  Year,
+  RatingBadge,
+  RatingText,
+  PosterWrapper,
+  PosterOverlay,
+} from './Card.styles';
 
 type Props = {
   item: any;
   onPress: (item: any) => void;
 };
 
-const CardComponent = (props: Props) => {
-  const show = props.item.show;
+const CardComponent = ({ item, onPress }: Props) => {
+  const show = item.show;
+
   return (
-    <TouchableOpacity
-      onPress={() => props.onPress(props.item)}
-      style={{
-        flexDirection: 'row',
-        padding: 10,
-        marginBottom: 10,
-        backgroundColor: '#eee',
-        borderRadius: 8,
-      }}
-    >
-      <Image
-        source={{ uri: show.image?.medium }}
-        style={{ width: 80, height: 100, borderRadius: 6 }}
-      />
+    <Wrapper activeOpacity={0.85} onPress={() => onPress(item)}>
+      <PosterWrapper>
+        <Poster source={{ uri: show.image?.medium }} />
+        <PosterOverlay />
+      </PosterWrapper>
 
-      <View style={{ marginLeft: 10, flex: 1 }}>
-        <Text style={{ fontWeight: 'bold', fontSize: 16 }}>{show.name}</Text>
+      <Info>
+        <Top>
+          <Name numberOfLines={1}>{show.name}</Name>
+          <Genres numberOfLines={1}>{show.genres.join(' • ')}</Genres>
+        </Top>
 
-        <Text>{show.genres.join(', ')}</Text>
+        <Bottom>
+          <Year>{show.premiered?.split('-')[0]}</Year>
 
-        <Text>⭐ {show.rating?.average}</Text>
-      </View>
-    </TouchableOpacity>
+          <RatingBadge>
+            <RatingText>⭐ {show.rating?.average ?? 'N/A'}</RatingText>
+          </RatingBadge>
+        </Bottom>
+      </Info>
+    </Wrapper>
   );
 };
 

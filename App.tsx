@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
 import { NavigationContainer } from '@react-navigation/native';
 import styled from 'styled-components/native';
 
@@ -49,4 +49,5 @@ export default App;
 
 const Container = styled(SafeAreaView)`
   flex: 1;
+  backgroundcolor: '#020617';
 `;
