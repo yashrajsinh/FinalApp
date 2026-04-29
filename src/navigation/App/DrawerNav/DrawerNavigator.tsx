@@ -79,7 +79,7 @@ export default function DrawerNavigator() {
       drawerContent={props => <CustomDrawerContent {...props} />}
       screenOptions={({ navigation }) => ({
         headerShown: true,
-        headerTitle: '',
+        headerTitle: '🦇 Fearless',
         drawerType: 'front',
 
         headerLeft: () => (
