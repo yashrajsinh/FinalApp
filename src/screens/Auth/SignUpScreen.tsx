@@ -37,11 +37,13 @@ const SignUpScreen = (props: Props) => {
   // func to handle sign up
   const handleSignUp = async () => {
     try {
-      const user = await signUp(email, password);
-      showToast('success', 'User Registered');
+      await signUp(email, password);
+      showToast('success', 'User Registered Successfully');
       navigation.goBack();
     } catch (error) {
-      console.log(error);
+      console.log('error from app sign up', error);
+      showToast('error', error + '');
+      throw error;
     }
   };
   //Toast func

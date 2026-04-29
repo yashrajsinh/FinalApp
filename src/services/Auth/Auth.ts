@@ -10,6 +10,7 @@ export const signUp = async (email: string, password: string) => {
     return userCredential.user;
   } catch (error) {
     console.log('User creation error = ' + error);
+    throw error;
   }
 };
 /**
