@@ -21,6 +21,9 @@ import {
   ItemLabel,
 } from '@/styles/drawer.style';
 
+//alert
+import { Alert } from 'react-native';
+
 const Drawer = createDrawerNavigator();
 
 // Central config
@@ -57,7 +60,17 @@ function CustomDrawerContent({
             <ItemWrapper
               key={item.route}
               active={active}
-              onPress={() => navigation.navigate(item.route as never)}
+              onPress={() => {
+                if (item.route === 'Rate') {
+                  Alert.alert(
+                    'Coming Soon',
+                    'Rate Us feature is not available yet.',
+                  );
+                  return;
+                }
+
+                navigation.navigate(item.route as never);
+              }}
             >
               <Ionicons
                 name={item.icon}
