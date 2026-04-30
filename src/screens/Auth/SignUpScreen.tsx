@@ -36,6 +36,26 @@ const SignUpScreen = (props: Props) => {
   const [password, setPassword] = useState('');
   // func to handle sign up
   const handleSignUp = async () => {
+    if (!name || !email || !password) {
+      showToast('error', 'Please fill all fields');
+      return;
+    }
+
+    if (name.trim().length < 2) {
+      showToast('error', 'Enter a valid name');
+      return;
+    }
+
+    const emailRegex = /^\S+@\S+\.\S+$/;
+    if (!emailRegex.test(email)) {
+      showToast('error', 'Invalid email format');
+      return;
+    }
+
+    if (password.length < 6) {
+      showToast('error', 'Password must be at least 6 characters');
+      return;
+    }
     try {
       await signUp(email, password);
       showToast('success', 'User Registered Successfully');

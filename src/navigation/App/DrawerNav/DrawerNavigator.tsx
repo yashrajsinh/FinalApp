@@ -11,7 +11,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import PortfolioScreen from '@/screens/App/DrawersScreen/PortfolioScreen';
 import AboutUsScreen from '@/screens/App/DrawersScreen/AboutUsScreen';
 import RateUsScreen from '@/screens/App/DrawersScreen/RateUsScreen';
-import TabNavigator from '../TabNav/TabNavigator';
+import TabNavigator from '@/navigation/App/TabNav/TabNavigator';
 
 // Styles
 import {
@@ -20,6 +20,9 @@ import {
   ItemWrapper,
   ItemLabel,
 } from '@/styles/drawer.style';
+
+//alert
+import { Alert } from 'react-native';
 
 const Drawer = createDrawerNavigator();
 
@@ -57,7 +60,17 @@ function CustomDrawerContent({
             <ItemWrapper
               key={item.route}
               active={active}
-              onPress={() => navigation.navigate(item.route as never)}
+              onPress={() => {
+                if (item.route === 'Rate') {
+                  Alert.alert(
+                    'Coming Soon',
+                    'Rate Us feature is not available yet.',
+                  );
+                  return;
+                }
+
+                navigation.navigate(item.route as never);
+              }}
             >
               <Ionicons
                 name={item.icon}

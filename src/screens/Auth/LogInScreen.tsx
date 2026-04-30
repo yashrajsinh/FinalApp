@@ -32,12 +32,41 @@ const LogInScreen = () => {
   const [password, setPassword] = useState('');
   // func to handle sign up
   const handleLogIn = async () => {
+    //local validations
+    if (!email || !password) {
+      showToast('error', 'Please fill all fields');
+      return;
+    }
+
+    const emailRegex = /^\S+@\S+\.\S+$/;
+    if (!emailRegex.test(email)) {
+      showToast('error', 'Invalid email format');
+      return;
+    }
+    if (password.length < 6) {
+      showToast('error', 'Password must be at least 6 characters');
+      return;
+    }
     try {
       await logIn(email, password);
       showToast('success', 'User exits in DB');
     } catch (error) {
-      console.log('Log in Error', error + '');
-      showToast('error', error + '');
+      console.log('Log in Error', error);
+
+      let message = 'Something went wrong';
+
+      if (typeof error === 'object' && error !== null && 'code' in error) {
+        const err = error as { code: string };
+
+        if (err.code === 'auth/user-not-found') {
+          message = 'User not found';
+        } else if (err.code === 'auth/wrong-password') {
+          message = 'Incorrect password';
+        } else if (err.code === 'auth/invalid-email') {
+          message = 'Invalid email address';
+        }
+      }
+      showToast('error', message);
     }
   };
   //Toast func
