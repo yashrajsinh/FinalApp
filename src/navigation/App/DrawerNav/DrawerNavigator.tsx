@@ -11,7 +11,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import PortfolioScreen from '@/screens/App/DrawersScreen/PortfolioScreen';
 import AboutUsScreen from '@/screens/App/DrawersScreen/AboutUsScreen';
 import RateUsScreen from '@/screens/App/DrawersScreen/RateUsScreen';
-import TabNavigator from '../TabNav/TabNavigator';
+import TabNavigator from '@/navigation/App/TabNav/TabNavigator';
 
 // Styles
 import {
