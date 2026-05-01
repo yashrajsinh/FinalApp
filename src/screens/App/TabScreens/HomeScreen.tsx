@@ -6,6 +6,11 @@ import { getMovies } from '@/services/movies/MoviesService';
 import CardComponent from '@/components/CardComponent/CardComponent';
 //navigation
 import { useNavigation } from '@react-navigation/native';
+//redux dispatch
+import { useDispatch } from 'react-redux';
+import { setImage } from '@/services/redux/reduxSlice';
+//Random Image
+import ImagePicker from '@/assets/data/ImagePicker';
 type Props = {};
 
 type Nav = {
@@ -15,12 +20,16 @@ type Nav = {
 const HomeScreen = (props: Props) => {
   const [data, setData] = useState([]);
   const navigation = useNavigation<Nav>();
+  const dispatch = useDispatch();
+  //get a random image
+  const picker = new ImagePicker();
   //call API
   useEffect(() => {
     const loadMovies = async () => {
       const data = await getMovies();
       setData(data);
       console.log('Data', data);
+      dispatch(setImage(picker.getImage()));
     };
     loadMovies();
   }, []);

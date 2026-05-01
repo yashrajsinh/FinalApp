@@ -11,6 +11,11 @@ import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
 
 import Toast from 'react-native-toast-message';
 
+//redux provider
+import { Provider } from 'react-redux';
+import imageStore from '@/services/redux/Imagestore';
+//random image
+
 function App() {
   const [user, setUser] = useState<FirebaseAuthTypes.User | null>(null);
   const [initializing, setInitializing] = useState(true);
@@ -37,10 +42,14 @@ function App() {
 
   return (
     <>
-      <NavigationContainer>
-        <Container>{user ? <DrawerNavigator /> : <AuthNavigator />}</Container>
-      </NavigationContainer>
-      <Toast position="bottom" />
+      <Provider store={imageStore}>
+        <NavigationContainer>
+          <Container>
+            {user ? <DrawerNavigator /> : <AuthNavigator />}
+          </Container>
+        </NavigationContainer>
+        <Toast position="bottom" />
+      </Provider>
     </>
   );
 }
@@ -49,5 +58,5 @@ export default App;
 
 const Container = styled(SafeAreaView)`
   flex: 1;
-  backgroundcolor: '#020617';
+  background-color: '#020617';
 `;
