@@ -18,7 +18,7 @@ import {
 import { useNavigation } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 //API Service
-import { signUp } from '@/services/api/FirebaseAuth/Auth';
+import { signUp } from '@/services/auth/FirebaseAuth';
 //Toast
 import Toast from 'react-native-toast-message';
 type AuthStackParamList = {
@@ -80,7 +80,7 @@ const SignUpScreen = (props: Props) => {
         <Card>
           {/* 🦇 Logo */}
           <Image
-            source={require('@/assets/logo.png')}
+            source={require('@/assets/images/logo.png')}
             style={{
               width: 130,
               height: 130,

@@ -38,7 +38,7 @@ const ForgotScreen = () => {
         <Card>
           {/* 🦇 Logo */}
           <Image
-            source={require('@/assets/logo.png')}
+            source={require('@/assets/images/logo.png')}
             style={{
               width: 120,
               height: 120,

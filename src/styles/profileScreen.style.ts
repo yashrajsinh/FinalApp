@@ -2,44 +2,57 @@ import styled from 'styled-components/native';
 
 export const Container = styled.View`
   flex: 1;
-  background-color: #0b1220;
+  background-color: #0f172a;
   justify-content: center;
   align-items: center;
+  padding: 20px;
 `;
 
 export const Card = styled.View`
-  width: 92%;
-  padding: 30px;
-  background-color: #111827;
-  border-radius: 28px;
+  width: 100%;
+  background-color: #1e293b;
+  border-radius: 24px;
+  padding: 28px;
   align-items: center;
 
   shadow-color: #000;
-  shadow-opacity: 0.4;
+  shadow-opacity: 0.3;
   shadow-radius: 12px;
   elevation: 10;
 `;
 
 export const ProfileImage = styled.Image`
-  width: 130px;
-  height: 130px;
-  border-radius: 65px;
-  margin-bottom: 20px;
-  border-width: 3px;
-  border-color: #3b82f6;
+  width: 120px;
+  height: 120px;
+  border-radius: 60px;
+  margin-bottom: 16px;
+  border: 3px solid #38bdf8;
 `;
 
 export const NameText = styled.Text`
-  color: white;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 700;
-  margin-bottom: 6px;
+  color: #f1f5f9;
+  margin-bottom: 20px;
+`;
+
+export const InfoCard = styled.View`
+  width: 100%;
+  background-color: #334155;
+  border-radius: 14px;
+  padding: 14px;
+  margin-bottom: 10px;
+`;
+
+export const InfoLabel = styled.Text`
+  font-size: 12px;
+  color: #94a3b8;
 `;
 
 export const InfoText = styled.Text`
-  color: #9ca3af;
   font-size: 14px;
-  margin-bottom: 4px;
+  color: #e2e8f0;
+  margin-top: 4px;
 `;
 
 export const Spacer = styled.View`
@@ -48,19 +61,18 @@ export const Spacer = styled.View`
 
 export const LogoutButtonWrapper = styled.View`
   width: 100%;
-  margin-top: 25px;
+  margin-top: 10px;
 `;
 
 export const LogoutButton = styled.TouchableOpacity`
   background-color: #ef4444;
   padding: 14px;
   border-radius: 14px;
-  width: 100%;
   align-items: center;
 `;
 
 export const LogoutText = styled.Text`
   color: white;
-  font-weight: 600;
   font-size: 16px;
+  font-weight: 600;
 `;

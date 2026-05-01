@@ -21,7 +21,7 @@ import Toast from 'react-native-toast-message';
 //navigation
 import { useNavigation } from '@react-navigation/native';
 //API Service
-import { logIn } from '@/services/api/FirebaseAuth/Auth';
+import { logIn } from '@/services/auth/FirebaseAuth';
 type Nav = {
   navigate: (screen: string) => void;
 };
@@ -49,7 +49,7 @@ const LogInScreen = () => {
     }
     try {
       await logIn(email, password);
-      showToast('success', 'User exits in DB');
+      showToast('success', 'Welcome Knight');
     } catch (error) {
       console.log('Log in Error', error);
 
@@ -85,7 +85,7 @@ const LogInScreen = () => {
         <Card>
           {/* Logo */}
           <Image
-            source={require('@/assets/logo.png')}
+            source={require('@/assets/images/logo.png')}
             style={{
               width: 130,
               height: 130,
