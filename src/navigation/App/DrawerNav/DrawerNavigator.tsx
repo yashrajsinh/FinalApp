@@ -23,6 +23,8 @@ import {
 
 //alert
 import { Alert } from 'react-native';
+//redux image
+import { useSelector } from 'react-redux';
 
 const Drawer = createDrawerNavigator();
 
@@ -39,12 +41,13 @@ function CustomDrawerContent({
   navigation,
 }: DrawerContentComponentProps) {
   const focusedRoute = state.routeNames[state.index];
+  const image = useSelector((state: any) => state.userProfile.imageUrl);
 
   return (
     <Container>
       <HeaderImage
         source={{
-          uri: 'https://images.alphacoders.com/241/thumb-1920-241901.jpg',
+          uri: image,
         }}
         resizeMode="cover"
       />
