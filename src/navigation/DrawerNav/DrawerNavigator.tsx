@@ -95,8 +95,8 @@ export default function DrawerNavigator() {
       drawerContent={props => <CustomDrawerContent {...props} />}
       screenOptions={({ navigation }) => ({
         headerShown: true,
-        headerTitle: '🦇 Fearless',
-        drawerType: 'front',
+        headerTitle: '',
+        drawerType: 'slide',
 
         headerLeft: () => (
           <TouchableOpacity
@@ -114,7 +114,7 @@ export default function DrawerNavigator() {
 
         headerTitleStyle: {
           fontWeight: '800',
-          color: '#0f172a',
+          color: 'rgba(234, 179, 8, 0.9)',
         },
 
         headerShadowVisible: false,

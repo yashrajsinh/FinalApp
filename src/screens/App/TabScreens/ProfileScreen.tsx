@@ -7,16 +7,18 @@ import { logOut } from '@/services/auth/FirebaseAuth';
 
 import {
   Container,
+  Header,
+  HeaderTitle,
+  HeaderSub,
   Card,
   ProfileImage,
   NameText,
-  InfoText,
   InfoCard,
   InfoLabel,
+  InfoText,
   Spacer,
   LogoutButton,
   LogoutText,
-  LogoutButtonWrapper,
 } from '@/styles/profileScreen.style';
 
 const ProfileScreen = () => {
@@ -39,36 +41,35 @@ const ProfileScreen = () => {
 
   return (
     <Container>
-      <Card>
-        {/* PROFILE IMAGE */}
-        <ProfileImage
-          source={{
-            uri: image,
-          }}
-        />
+      {/* 🔥 HEADER */}
+      <Header>
+        <HeaderTitle>Profile</HeaderTitle>
+        <HeaderSub>Manage your account</HeaderSub>
+      </Header>
 
-        {/* NAME */}
+      {/* 🧾 CARD */}
+      <Card>
+        <ProfileImage source={{ uri: image }} />
+
         <NameText>{user?.displayName || 'No name set'}</NameText>
 
-        {/* INFO SECTION */}
         <InfoCard>
-          <InfoLabel>UID</InfoLabel>
+          <InfoLabel>User ID</InfoLabel>
           <InfoText numberOfLines={1}>{user?.uid || '—'}</InfoText>
         </InfoCard>
 
         <InfoCard>
           <InfoLabel>Email Verified</InfoLabel>
-          <InfoText>{user?.emailVerified ? 'Yes ✅' : 'No ❌'}</InfoText>
+          <InfoText>
+            {user?.emailVerified ? 'Verified ✅' : 'Not Verified ❌'}
+          </InfoText>
         </InfoCard>
 
         <Spacer />
 
-        {/* LOGOUT BUTTON */}
-        <LogoutButtonWrapper>
-          <LogoutButton activeOpacity={0.8} onPress={handleLogout}>
-            <LogoutText>Logout</LogoutText>
-          </LogoutButton>
-        </LogoutButtonWrapper>
+        <LogoutButton activeOpacity={0.85} onPress={handleLogout}>
+          <LogoutText>Logout</LogoutText>
+        </LogoutButton>
       </Card>
     </Container>
   );
