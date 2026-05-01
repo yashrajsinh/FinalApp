@@ -1,15 +1,32 @@
-import { View, Image } from 'react-native';
 import React from 'react';
-//FB auth to logout
-import { logOut } from '@/services/Auth/Auth';
-//buttons
-import PrimaryButton from '@/components/Buttons/PrimaryButton';
-//redux image
 import { useSelector } from 'react-redux';
-type Props = {};
+import { onAuthStateChanged } from 'firebase/auth';
 
-const ProfileScreen = (props: Props) => {
+import { auth } from '@/services/Firebase/firebaseConfig';
+import { logOut } from '@/services/Auth/Auth';
+
+import {
+  Container,
+  Card,
+  ProfileImage,
+  NameText,
+  InfoText,
+  Spacer,
+  LogoutButton,
+  LogoutText,
+  LogoutButtonWrapper,
+} from '@/styles/profileScreen.style';
+
+const ProfileScreen = () => {
+  const [user, setUser] = React.useState<any>(null);
+
   const image = useSelector((state: any) => state.userProfile.imageUrl);
+
+  React.useEffect(() => {
+    const unsub = onAuthStateChanged(auth, setUser);
+    return unsub;
+  }, []);
+
   const handleLogout = async () => {
     try {
       await logOut();
@@ -17,20 +34,35 @@ const ProfileScreen = (props: Props) => {
       console.log('Logout error:', error);
     }
   };
+
   return (
-    <View style={{ padding: 20 }}>
-      {image && (
-        <Image
-          source={{ uri: image }}
-          style={{ width: 100, height: 100, marginBottom: 20 }}
+    <Container>
+      <Card>
+        {/* BIG PROFILE IMAGE */}
+        <ProfileImage
+          source={{
+            uri: image,
+          }}
         />
-      )}
-      <PrimaryButton text="Logout" onPress={handleLogout} />
-      <PrimaryButton
-        text="Test Button"
-        onPress={() => console.log('clicked')}
-      />
-    </View>
+
+        {/* NAME */}
+        <NameText>{user?.displayName || 'No name set'}</NameText>
+
+        <InfoText>UID: {user?.uid}</InfoText>
+        <InfoText>
+          Email Verified: {user?.emailVerified ? 'Yes' : 'No'}
+        </InfoText>
+
+        <Spacer />
+
+        {/* BIG LOGOUT BUTTON */}
+        <LogoutButtonWrapper>
+          <LogoutButton onPress={handleLogout}>
+            <LogoutText>Logout</LogoutText>
+          </LogoutButton>
+        </LogoutButtonWrapper>
+      </Card>
+    </Container>
   );
 };
 
