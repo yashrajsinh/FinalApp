@@ -36,7 +36,7 @@ export const ItemWrapper = styled.TouchableOpacity<ItemProps>`
   flex-direction: row;
   align-items: center;
   padding: 14px 16px;
-  margin: 0px 12px 8px;
+  margin: 8px 12px 8px;
   border-radius: 12px;
 
   /* Switch between deep card color and the soft yellow glow */
