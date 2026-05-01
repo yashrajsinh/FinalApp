@@ -9,7 +9,7 @@ import {
   Button,
   ButtonText,
   FooterText,
-} from '@/components/styles/loginStyles';
+} from '@/styles/loginStyles';
 
 /* 🧠 SYSTEM STAT TILE */
 const StatTile = ({ label, value }: any) => (

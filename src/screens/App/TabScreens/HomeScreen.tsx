@@ -8,7 +8,7 @@ import CardComponent from '@/components/CardComponent/CardComponent';
 import { useNavigation } from '@react-navigation/native';
 //redux dispatch
 import { useDispatch } from 'react-redux';
-import { setImage } from '@/services/redux/reduxSlice';
+import { setImage } from '@/redux/reduxSlice';
 //Random Image
 import ImagePicker from '@/assets/data/ImagePicker';
 type Props = {};

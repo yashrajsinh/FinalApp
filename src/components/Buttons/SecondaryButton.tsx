@@ -1,9 +1,6 @@
 import { View, Text } from 'react-native';
 import React from 'react';
-import {
-  AlternateButton,
-  AlternateText,
-} from '@/components/styles/loginStyles';
+import { AlternateButton, AlternateText } from '@/styles/loginStyles';
 
 type Props = {
   text: string;
