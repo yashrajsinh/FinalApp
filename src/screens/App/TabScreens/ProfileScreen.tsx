@@ -2,8 +2,8 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { onAuthStateChanged } from 'firebase/auth';
 
-import { auth } from '@/services/Firebase/firebaseConfig';
-import { logOut } from '@/services/api/FirebaseAuth/Auth';
+import { auth } from '@/services/api/Firebase/firebaseConfig';
+import { logOut } from '@/services/auth/FirebaseAuth';
 
 import {
   Container,
@@ -11,6 +11,8 @@ import {
   ProfileImage,
   NameText,
   InfoText,
+  InfoCard,
+  InfoLabel,
   Spacer,
   LogoutButton,
   LogoutText,
@@ -38,7 +40,7 @@ const ProfileScreen = () => {
   return (
     <Container>
       <Card>
-        {/* BIG PROFILE IMAGE */}
+        {/* PROFILE IMAGE */}
         <ProfileImage
           source={{
             uri: image,
@@ -48,16 +50,22 @@ const ProfileScreen = () => {
         {/* NAME */}
         <NameText>{user?.displayName || 'No name set'}</NameText>
 
-        <InfoText>UID: {user?.uid}</InfoText>
-        <InfoText>
-          Email Verified: {user?.emailVerified ? 'Yes' : 'No'}
-        </InfoText>
+        {/* INFO SECTION */}
+        <InfoCard>
+          <InfoLabel>UID</InfoLabel>
+          <InfoText numberOfLines={1}>{user?.uid || '—'}</InfoText>
+        </InfoCard>
+
+        <InfoCard>
+          <InfoLabel>Email Verified</InfoLabel>
+          <InfoText>{user?.emailVerified ? 'Yes ✅' : 'No ❌'}</InfoText>
+        </InfoCard>
 
         <Spacer />
 
-        {/* BIG LOGOUT BUTTON */}
+        {/* LOGOUT BUTTON */}
         <LogoutButtonWrapper>
-          <LogoutButton onPress={handleLogout}>
+          <LogoutButton activeOpacity={0.8} onPress={handleLogout}>
             <LogoutText>Logout</LogoutText>
           </LogoutButton>
         </LogoutButtonWrapper>

@@ -1,14 +1,14 @@
 import { View, Text, FlatList } from 'react-native';
 import React, { useEffect, useState } from 'react';
 //API Service
-import { getMovies } from '@/services/movies/MoviesService';
+import { getMovies } from '@/services/api/movies/MoviesService';
 //Card View
 import CardComponent from '@/components/CardComponent/CardComponent';
 //navigation
 import { useNavigation } from '@react-navigation/native';
 //redux dispatch
 import { useDispatch } from 'react-redux';
-import { setImage } from '@/redux/reduxSlice';
+import { setImage } from '@/store/slices/imageSlice';
 //Random Image
 import ImagePicker from '@/assets/data/ImagePicker';
 type Props = {};

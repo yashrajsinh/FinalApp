@@ -3,7 +3,7 @@ import React from 'react';
 //stack nav for auth
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 //styles
-import { Container } from '@/navigation/Auth/AuthNavigator.styles';
+import { Container } from '@/styles/loginStyles';
 //screens
 import LogInScreen from '@/screens/Auth/LogInScreen';
 import SignUpScreen from '@/screens/Auth/SignUpScreen';
