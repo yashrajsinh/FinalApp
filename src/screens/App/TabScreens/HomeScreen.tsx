@@ -1,44 +1,67 @@
-import { View, Text, FlatList } from 'react-native';
+import { View, FlatList } from 'react-native';
 import React, { useEffect, useState } from 'react';
-//API Service
+
+// API
 import { getMovies } from '@/services/api/movies/MoviesService';
-//Card View
+
+// Components
 import CardComponent from '@/components/CardComponent/CardComponent';
-//navigation
+
+// Navigation
 import { useNavigation } from '@react-navigation/native';
-//redux dispatch
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+
+// Redux
 import { useDispatch } from 'react-redux';
 import { setImage } from '@/store/slices/imageSlice';
-//Random Image
-import ImagePicker from '@/assets/data/ImagePicker';
-type Props = {};
 
-type Nav = {
-  navigate: (screen: string) => void;
+// Utils
+import ImagePicker from '@/assets/data/ImagePicker';
+
+type MovieItem = {
+  show: {
+    id: number;
+    name: string;
+    image?: {
+      medium: string;
+    };
+  };
 };
 
-const HomeScreen = (props: Props) => {
-  const [data, setData] = useState([]);
+type RootStackParamList = {
+  Home: undefined;
+  MovieDetails: { item: MovieItem };
+};
+
+type Nav = NativeStackNavigationProp<RootStackParamList>;
+
+const HomeScreen = () => {
+  const [data, setData] = useState<MovieItem[]>([]);
   const navigation = useNavigation<Nav>();
   const dispatch = useDispatch();
-  //get a random image
+
   const picker = new ImagePicker();
-  //call API
+
   useEffect(() => {
     const loadMovies = async () => {
-      const data = await getMovies();
-      setData(data);
-      console.log('Data', data);
-      dispatch(setImage(picker.getImage()));
+      try {
+        const res = await getMovies();
+        setData(res);
+
+        dispatch(setImage(picker.getImage()));
+      } catch (error) {
+        console.log('API Error:', error);
+      }
     };
+
     loadMovies();
   }, []);
 
   return (
-    <View style={{ padding: 10, backgroundColor: '#1F2937' }}>
+    <View style={{ flex: 1, padding: 10, backgroundColor: '#1F2937' }}>
       <FlatList
         data={data}
-        keyExtractor={(item: any) => item.show.id.toString()}
+        keyExtractor={item => item.show.id.toString()}
         renderItem={({ item }) => (
           <CardComponent
             item={item}

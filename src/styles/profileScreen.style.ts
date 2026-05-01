@@ -2,7 +2,8 @@ import styled from 'styled-components/native';
 
 export const Container = styled.View`
   flex: 1;
-  background-color: #0f172a;
+
+  background-color: #1e293b;
   justify-content: center;
   align-items: center;
   padding: 20px;
@@ -10,7 +11,7 @@ export const Container = styled.View`
 
 export const Card = styled.View`
   width: 100%;
-  background-color: #1e293b;
+  background-color: #0f172a;
   border-radius: 24px;
   padding: 28px;
   align-items: center;
