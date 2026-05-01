@@ -1,5 +1,5 @@
 import React from 'react';
-import { InputText } from '@/components/styles/loginStyles';
+import { InputText } from '@/styles/loginStyles';
 
 type Props = {
   placeholder: string;

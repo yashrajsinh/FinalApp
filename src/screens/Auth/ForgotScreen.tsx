@@ -14,7 +14,7 @@ import {
   Title,
   Subtitle,
   FooterText,
-} from '@/components/styles/loginStyles';
+} from '@/styles/loginStyles';
 
 // navigation
 import { useNavigation } from '@react-navigation/native';

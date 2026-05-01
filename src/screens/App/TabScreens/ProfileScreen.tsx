@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { onAuthStateChanged } from 'firebase/auth';
 
 import { auth } from '@/services/Firebase/firebaseConfig';
-import { logOut } from '@/services/Auth/Auth';
+import { logOut } from '@/services/api/FirebaseAuth/Auth';
 
 import {
   Container,

@@ -12,13 +12,13 @@ import {
   Title,
   Subtitle,
   FooterText,
-} from '@/components/styles/loginStyles';
+} from '@/styles/loginStyles';
 
 //navigation
 import { useNavigation } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 //API Service
-import { signUp } from '@/services/Auth/Auth';
+import { signUp } from '@/services/api/FirebaseAuth/Auth';
 //Toast
 import Toast from 'react-native-toast-message';
 type AuthStackParamList = {

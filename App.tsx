@@ -3,8 +3,8 @@ import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
 import { NavigationContainer } from '@react-navigation/native';
 import styled from 'styled-components/native';
 
-import DrawerNavigator from '@/navigation/App/DrawerNav/DrawerNavigator';
-import AuthNavigator from '@/navigation/Auth/AuthNavigator';
+import DrawerNavigator from '@/navigation/DrawerNav/DrawerNavigator';
+import AuthNavigator from '@/navigation/AuthNavigation/AuthNavigator';
 
 import RNBootSplash from 'react-native-bootsplash';
 import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
@@ -13,7 +13,8 @@ import Toast from 'react-native-toast-message';
 
 //redux provider
 import { Provider } from 'react-redux';
-import imageStore from '@/services/redux/Imagestore';
+import imageStore from '@/store/imageStore';
+
 //random image
 
 function App() {

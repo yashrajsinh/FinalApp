@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, ButtonText } from '@/components/styles/loginStyles';
+import { Button, ButtonText } from '@/styles/loginStyles';
 
 type Props = {
   text: string;

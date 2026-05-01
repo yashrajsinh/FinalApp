@@ -15,13 +15,13 @@ import {
   Subtitle,
   ForgotPassword,
   ForgotText,
-} from '@/components/styles/loginStyles';
+} from '@/styles/loginStyles';
 //Toast
 import Toast from 'react-native-toast-message';
 //navigation
 import { useNavigation } from '@react-navigation/native';
 //API Service
-import { logIn } from '@/services/Auth/Auth';
+import { logIn } from '@/services/api/FirebaseAuth/Auth';
 type Nav = {
   navigate: (screen: string) => void;
 };
